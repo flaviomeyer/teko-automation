@@ -1,0 +1,8 @@
+---
+# tasks file for create_subnet
+- name: Add a subnet
+  azure_rm_subnet:
+    resource_group: '{{ subnet_resource_group }}'
+    name: '{{ subnet_name }}'
+    address_prefix: '{{ subnet_address_prefix }}'
+    virtual_network: '{{ subnet_virtual_network }}'

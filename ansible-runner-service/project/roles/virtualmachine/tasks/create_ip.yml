@@ -1,0 +1,12 @@
+---
+# tasks file for create_ip  
+- name: Create a public ip address
+  azure_rm_publicipaddress:
+    resource_group: '{{ ip_resource_group }}'
+    name: '{{ ip_name }}'
+    allocation_method: '{{ ip_allocation_method }}'
+  register: output_ip_address
+
+- name: Public IP of VM
+  debug:
+    msg: "The public IP is {{ output_ip_address.state.ip_address }}."

@@ -1,0 +1,19 @@
+---
+# tasks file for create_nsg
+- name: Create a network security group that allows SSH & RDP
+  azure_rm_securitygroup:
+    resource_group: '{{ nsg_resource_group }}'
+    name: '{{ nsg_name }}'
+    rules:
+      - name: SSH
+        protocol: Tcp
+        destination_port_range: 22
+        access: Allow
+        priority: 1000
+        direction: Inbound
+      - name: RDP
+        protocol: Tcp
+        destination_port_range: 3389
+        access: Allow
+        priority: 1001
+        direction: Inbound

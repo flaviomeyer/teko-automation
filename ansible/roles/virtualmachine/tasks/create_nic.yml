@@ -1,0 +1,13 @@
+---
+# tasks file for create_nic
+- name: Create a virtual network interface card
+  azure_rm_networkinterface:
+    resource_group: '{{ nic_resource_group }}'
+    name: '{{ nic_name }}'
+    virtual_network: '{{ nic_virtual_network }}'
+    subnet_name: '{{ nic_subnet_name }}'
+    security_group: '{{ nic_security_group }}'
+    ip_configurations: 
+      - name: ipconfig1
+        public_ip_address_name: '{{ nic_public_ip_address_name }}'
+        primary: True

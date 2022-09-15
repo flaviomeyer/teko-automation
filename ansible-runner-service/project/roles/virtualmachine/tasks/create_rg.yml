@@ -1,0 +1,6 @@
+---
+# tasks file for create_rg  
+- name: Create a resource group
+  azure_rm_resourcegroup:
+    name: '{{ rg_name }}'
+    location: '{{ rg_location }}'

@@ -1,0 +1,30 @@
+---
+- gather_facts:
+
+- name: Create a resource group
+  include_tasks: create_rg.yml
+  when: rg_name is defined
+
+- name: Create a virtual network
+  include_tasks: create_vnet.yml
+  when: vnet_name is defined
+
+- name: Add a subnet
+  include_tasks: create_subnet.yml
+  when: subnet_name is defined
+
+- name: Create a public ip address
+  include_tasks: create_ip.yml
+  when: ip_name is defined
+
+- name: Create a network security group
+  include_tasks: create_nsg.yml
+  when: nsg_name is defined
+
+- name: Create a virtual network interface card
+  include_tasks: create_nic.yml
+  when: nic_name is defined
+
+- name: Create a VM with managed disk
+  include_tasks: create_vm.yml
+  when: vm_name is defined
